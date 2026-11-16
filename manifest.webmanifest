@@ -1,6 +1,6 @@
 {
-  "name": "Flobella Group Team Hub",
-  "short_name": "FG Hub",
+  "name": "Flobella Group",
+  "short_name": "Flobella Group",
   "description": "Links, workflows, fees and tools for Flobella Group team agents.",
   "start_url": "./",
   "scope": "./",
