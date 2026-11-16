@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flobella Group Team Hub</title>
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Links, workflows, fees and tools for Flobella Group team agents.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="FG Hub">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Flobella brand: Jet Black, Sandy Brown, Limewash, Warm Stone, Clean White */
+  --ink:#0d0d0c;
+  --black:#000000;
+  --sand:#c9a46b;
+  --sand-deep:#8a6a3a;
+  --bone:#e7e1d6;
+  --stone:#c8c6be;
+  --paper:#f6f3ee;
+  --white:#ffffff;
+  --muted:#5f5b53;
+  --good:#2f6b46;
+  --warn:#9a5b12;
+  --display:"Bodoni Moda", "Didot", Georgia, serif;
+  --body:"Manrope", "Helvetica Neue", Arial, sans-serif;
+  /* Layout: black masthead, sticky section nav, two-column card grid that stacks on phones */
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sand);outline-offset:2px;border-radius:4px}
+
+/* Masthead */
+.mast{background:var(--black);color:var(--bone);padding:28px 20px 22px}
+.mast-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between}
+.brand{display:flex;flex-direction:column;gap:4px}
+.logo{margin:0 0 6px;line-height:0}
+.logo img{display:block;width:clamp(220px,40vw,320px);height:auto}
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:6px}
+.logo-tile{display:flex;flex-direction:column;border:1px solid #e2ddd3;border-radius:10px;overflow:hidden;text-decoration:none;background:var(--white)}
+.logo-tile .art{height:86px;display:grid;place-items:center;padding:14px}
+.logo-tile .art img{max-width:100%;max-height:100%}
+.logo-tile .meta{padding:8px 12px;font-size:12.5px;font-weight:600}
+.logo-tile .meta small{display:block;font-weight:400;color:var(--muted)}
+.wordmark{font-family:var(--display);font-weight:500;font-size:clamp(30px,5vw,44px);letter-spacing:.02em;line-height:1;color:var(--white);margin:0}
+.wordmark span{color:var(--sand)}
+.tag{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
+.status{display:flex;flex-wrap:wrap;gap:10px}
+.stat{border:1px solid #2b2925;border-radius:10px;padding:10px 14px;min-width:170px;background:#0f0e0c}
+.stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+.stat .v{font-size:16px;font-weight:600;color:var(--white);font-variant-numeric:tabular-nums}
+.stat .s{font-size:12px;color:var(--sand)}
+.stat.alert .s{color:#f0b35a}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:5;background:var(--bone);border-bottom:1px solid var(--stone)}
+nav ul{max-width:1120px;margin:0 auto;padding:0 12px;list-style:none;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav a{display:block;padding:13px 12px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;color:var(--muted);border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink);border-bottom-color:var(--sand)}
+
+main{max-width:1120px;margin:0 auto;padding:26px 20px 60px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+section{background:var(--white);border:1px solid #e2ddd3;border-radius:14px;padding:22px}
+section.wide{grid-column:1/-1}
+@media (max-width:820px){main{grid-template-columns:1fr}}
+h2{font-family:var(--display);font-weight:600;font-size:24px;margin:0 0 4px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 16px;font-size:14px;max-width:65ch}
+h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand-deep);margin:18px 0 8px}
+
+/* Quick links */
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.link{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border:1px solid var(--stone);border-radius:10px;text-decoration:none;background:var(--paper);transition:border-color .15s, background .15s}
+.link:hover{border-color:var(--sand);background:var(--white)}
+.link b{font-size:15px}
+.link small{color:var(--muted);font-size:12.5px}
+.link.missing{border-style:dashed;cursor:default}
+.link .chip{align-self:flex-start;margin-top:6px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:99px;background:#f3e6cf;color:var(--warn)}
+
+/* People */
+.people{display:grid;gap:10px}
+.person{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;padding:12px;border-radius:10px;background:var(--paper)}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--sand);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:17px}
+.person b{display:block}
+.person .role{font-size:12.5px;color:var(--sand-deep);font-weight:600}
+.person p{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+
+/* Lists */
+ul.clean{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+ul.clean li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline}
+.amt{font-weight:700;font-variant-numeric:tabular-nums;min-width:68px}
+.note{font-size:13px;color:var(--muted);margin-top:12px;padding:10px 12px;border-left:3px solid var(--sand);background:var(--paper);border-radius:0 8px 8px 0}
+
+/* Steps */
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:10px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start}
+ol.steps li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--black);color:var(--sand);display:grid;place-items:center;font-weight:700;font-size:13px}
+ol.steps b{display:block}
+ol.steps span{font-size:13.5px;color:var(--muted)}
+
+/* Calculator */
+.calc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:620px){.calc{grid-template-columns:1fr}}
+label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+input,select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--stone);border-radius:8px;background:var(--white);color:var(--ink)}
+input:focus,select:focus{border-color:var(--sand);outline:none;box-shadow:0 0 0 3px rgba(201,164,107,.25)}
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+@media (max-width:620px){.results{grid-template-columns:1fr}}
+.res{padding:14px 16px;border-radius:10px;background:var(--paper)}
+.res.you{background:var(--black);color:var(--white)}
+.res .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.res.you .k{color:var(--sand)}
+.res .v{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.res .s{font-size:12px;color:var(--muted)}
+.res.you .s{color:var(--stone)}
+
+/* Pipeline */
+.pipe{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.stage{padding:7px 12px;border-radius:99px;border:1px solid var(--stone);font-size:13px;font-weight:600;background:var(--paper)}
+.stage.hot{border-color:var(--sand);background:#f3e6cf}
+.stage.done{background:var(--black);color:var(--sand);border-color:var(--black)}
+.arrow{color:var(--stone);font-size:13px}
+
+/* Brand */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sw{border:1px solid #e2ddd3;border-radius:10px;overflow:hidden;background:var(--white);cursor:pointer;text-align:left;font:inherit;padding:0;color:var(--ink)}
+.sw .chipc{height:58px}
+.sw .meta{padding:9px 12px}
+.sw b{display:block;font-size:13.5px}
+.sw small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+@media (max-width:620px){.rules{grid-template-columns:1fr}}
+.rule{padding:12px 14px;border-radius:10px;background:var(--paper);font-size:13.5px}
+.yes{color:var(--good);font-weight:700}
+.no{color:#9b2c2c;font-weight:700;text-decoration:line-through}
+
+/* Install card */
+.install{grid-column:1/-1;display:none;background:var(--black);color:var(--bone);border:none;position:relative}
+.install.show{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start}
+.install img{width:64px;height:64px;border-radius:14px}
+.install h2{color:var(--white);font-size:21px}
+.install p{margin:0 0 10px;font-size:14px;color:var(--stone)}
+.install ol{margin:0;padding-left:20px;font-size:14px;display:grid;gap:4px}
+.install b{color:var(--sand)}
+.install .os{display:none}
+.install .os.on{display:block}
+.btn{font:inherit;font-weight:700;font-size:14px;padding:10px 18px;border-radius:99px;border:none;background:var(--sand);color:var(--black);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--stone);border:1px solid #3a3731}
+.install .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+@media (max-width:480px){.install.show{grid-template-columns:1fr}.install img{width:52px;height:52px}}
+@media (display-mode: standalone){.install{display:none!important}}
+
+footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:12.5px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--black);color:var(--sand);padding:9px 16px;border-radius:99px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-inner">
+    <div class="brand">
+      <h1 class="logo"><img src="brand/logo-gold.png" alt="Flobella Group" width="900" height="277"></h1>
+      <div class="tag">Team Hub · Central Florida</div>
+    </div>
+    <div class="status" aria-label="Upcoming dates">
+      <div class="stat" id="stat-monthly"><div class="k">Monthly fee · $45</div><div class="v">—</div><div class="s">&nbsp;</div></div>
+      <div class="stat" id="stat-annual"><div class="k">Annual fee</div><div class="v">—</div><div class="s">&nbsp;</div></div>
+      <div class="stat" id="stat-meeting"><div class="k">Team meeting</div><div class="v">—</div><div class="s">&nbsp;</div></div>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Sections">
+  <ul>
+    <li><a href="#links">Quick links</a></li>
+    <li><a href="#contacts">Who to go to</a></li>
+    <li><a href="#deals">Deal workflow</a></li>
+    <li><a href="#fees">Fees &amp; dates</a></li>
+    <li><a href="#calculator">Commission calculator</a></li>
+    <li><a href="#pipeline">Lead pipeline</a></li>
+    <li><a href="#onboarding">Onboarding</a></li>
+    <li><a href="#brand">Brand kit</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section class="install" id="install" aria-labelledby="install-h">
+    <img src="icons/icon-192.png" alt="FG Hub app icon">
+    <div>
+      <h2 id="install-h">Put FG Hub on your home screen</h2>
+      <p>It opens full-screen like an app, and it still works when you're offline.</p>
+      <div class="os" id="os-ios">
+        <ol>
+          <li>Open this page in <b>Safari</b>.</li>
+          <li>Tap the <b>Share</b> button (the square with the arrow).</li>
+          <li>Scroll down and tap <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+        </ol>
+      </div>
+      <div class="os" id="os-android">
+        <ol>
+          <li>Open this page in <b>Chrome</b>.</li>
+          <li>Tap the <b>⋮</b> menu in the top corner.</li>
+          <li>Tap <b>Add to Home screen</b> or <b>Install app</b>.</li>
+        </ol>
+      </div>
+      <div class="os" id="os-other">
+        <p>Open this link on your phone, then use your browser's <b>Add to Home Screen</b> option.</p>
+      </div>
+      <div class="actions">
+        <button class="btn" id="install-btn" type="button" hidden>Install FG Hub</button>
+        <button class="btn ghost" id="install-hide" type="button">Hide this</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wide" id="links">
+    <h2>Quick links</h2>
+    <p class="lede">Everything you open on a normal day. Bookmark this page and start here.</p>
+    <div class="links" id="link-grid"></div>
+  </section>
+
+  <section id="contacts">
+    <h2>Who to go to</h2>
+    <p class="lede">Send the question to the right person the first time.</p>
+    <div class="people">
+      <div class="person">
+        <div class="avatar">E</div>
+        <div>
+          <b>Ella</b>
+          <div class="role">Transaction Coordinator · Listing Manager · Admin</div>
+          <p>Contract intake forms, opening your ReZen transaction, listing intake forms, lockbox and sign checkout.</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="avatar">L</div>
+        <div>
+          <b>Lesly Hijar</b>
+          <div class="role">Owner · Team Leader</div>
+          <p>Team lead distribution, approvals, Real Broker onboarding questions.</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="avatar">C</div>
+        <div>
+          <b>Chris Aguiar</b>
+          <div class="role">Owner · Team Lead</div>
+          <p>Team lead distribution, deal strategy, team systems and trackers.</p>
+        </div>
+      </div>
+    </div>
+    <h3>Office</h3>
+    <ul class="clean">
+      <li><span class="amt">Hours</span><span>Open 9–5, every day. Come and go as needed.</span></li>
+      <li><span class="amt">Access</span><span>Use the Sentri app for the front door when the Team Leads aren't in.</span></li>
+    </ul>
+  </section>
+
+  <section id="deals">
+    <h2>Deal workflow</h2>
+    <p class="lede">What to do the moment something moves.</p>
+    <h3>Under contract</h3>
+    <ol class="steps">
+      <li><div><b>Submit the contract intake form</b><span>In the team's Teams channel, right after execution. Don't wait.</span></div></li>
+      <li><div><b>Ella opens the ReZen transaction</b><span>You don't open it yourself. Ella does it once your intake is in.</span></div></li>
+      <li><div><b>Upload docs for compliance in ReZen</b><span>All deals are filed and approved for DA in ReZen.</span></div></li>
+      <li><div><b>Update the lead in Lofty</b><span>Move it to Under Contract so the pipeline stays accurate.</span></div></li>
+    </ol>
+    <h3>New listing</h3>
+    <ol class="steps">
+      <li><div><b>Submit the listing intake form</b><span>In the Teams channel.</span></div></li>
+      <li><div><b>Check out lockbox and signs with Ella</b><span>Only after the listing intake form is submitted.</span></div></li>
+    </ol>
+  </section>
+
+  <section id="fees">
+    <h2>Fees &amp; dates</h2>
+    <p class="lede">Team agent fees and Real Broker transaction fees.</p>
+    <h3>Team fees</h3>
+    <ul class="clean">
+      <li><span class="amt">$45</span><span>Monthly fee, due the <b>15th of every month</b>. No grace period.</span></li>
+      <li><span class="amt">Annual</span><span>Annual fee, due <b>every November 1</b>, no matter when you joined.</span></li>
+    </ul>
+    <div class="note">All team fees are non-refundable.</div>
+    <h3>Transaction fees</h3>
+    <ul class="clean">
+      <li><span class="amt">$695</span><span>Transaction fee, paid by the client. If the client doesn't pay it, the agent does.</span></li>
+      <li><span class="amt">$0</span><span>No transaction fee on rentals.</span></li>
+      <li><span class="amt">$1,000</span><span>Flat fee on your personal transactions.</span></li>
+    </ul>
+    <div class="note">The team doesn't offer bonuses of any kind, including agent, buyer and seller bonuses.</div>
+  </section>
+
+  <section class="wide" id="calculator">
+    <h2>Commission calculator</h2>
+    <p class="lede">Estimate your share before you write the offer. Real Broker's split comes out of the team's share, not yours.</p>
+    <div class="calc">
+      <div>
+        <label for="c-source">Lead source</label>
+        <select id="c-source">
+          <option value="50">Team Buyer Lead · 50 / 50</option>
+          <option value="35">Team Seller Lead · 35 / 65</option>
+          <option value="65">Sphere Lead · 65 / 35</option>
+        </select>
+      </div>
+      <div>
+        <label for="c-price">Sale price ($)</label>
+        <input id="c-price" type="text" inputmode="decimal" value="425,000">
+      </div>
+      <div>
+        <label for="c-rate">Commission (%)</label>
+        <input id="c-rate" type="text" inputmode="decimal" value="3">
+      </div>
+    </div>
+    <div class="results" aria-live="polite">
+      <div class="res"><div class="k">Gross commission</div><div class="v" id="r-gci">—</div><div class="s" id="r-gci-s">&nbsp;</div></div>
+      <div class="res you"><div class="k">Your share</div><div class="v" id="r-you">—</div><div class="s" id="r-you-s">&nbsp;</div></div>
+      <div class="res"><div class="k">Team share</div><div class="v" id="r-team">—</div><div class="s" id="r-team-s">&nbsp;</div></div>
+    </div>
+    <div class="note">Estimate only. The $695 transaction fee is paid by the client and isn't taken out here. Final numbers come from ReZen.</div>
+  </section>
+
+  <section class="wide" id="pipeline">
+    <h2>Lead pipeline in Lofty</h2>
+    <p class="lede">Place leads by what's actually happened, not by gut feel. Every lead should sit in one of these stages.</p>
+    <div class="pipe" id="pipe"></div>
+    <div class="note">Warm and Hot are <b>tags</b> on Active Buyer leads, not separate stages.</div>
+  </section>
+
+  <section id="onboarding">
+    <h2>Onboarding</h2>
+    <p class="lede">For new team agents joining through Real Broker.</p>
+    <ol class="steps">
+      <li><div><b>Get the application link</b><span>From whoever brought you in, either a Team Lead or a team agent.</span></div></li>
+      <li><div><b>Team: Flobella Group</b><span>List Flobella Group as your team on the Real Broker application.</span></div></li>
+      <li><div><b>Team Leader: Lesly Hijar</b><span>Enter Lesly Hijar as Team Leader.</span></div></li>
+      <li><div><b>Sponsor: whoever brought you in</b><span>If two people brought you in together, list both.</span></div></li>
+      <li><div><b>Sign the Team Member Agreement</b><span>The team's internal agreement for team agents.</span></div></li>
+      <li><div><b>Get set up in Lofty and ReZen</b><span>Then join the team's Teams channel.</span></div></li>
+    </ol>
+  </section>
+
+  <section id="brand">
+    <h2>Brand kit</h2>
+    <p class="lede">Use only these approved files. Never stretch, recolor, outline or tilt the logo. Get marketing approved by the team before it goes out.</p>
+    <h3>Logo files</h3>
+    <p style="margin:0 0 4px;font-size:13px;color:var(--muted)">Tap a logo to open it, then press and hold to save it. Use the white logo on dark backgrounds and the black logo on light ones.</p>
+    <div class="logos">
+      <a class="logo-tile" href="brand/flobella-real-logo-black.png" target="_blank" rel="noopener"><div class="art" style="background:var(--paper)"><img src="brand/flobella-real-logo-black.png" alt="Black logo"></div><div class="meta">Logo · Black<small>For light backgrounds</small></div></a>
+      <a class="logo-tile" href="brand/flobella-real-logo-white.png" target="_blank" rel="noopener"><div class="art" style="background:var(--black)"><img src="brand/flobella-real-logo-white.png" alt="White logo"></div><div class="meta">Logo · White<small>For dark backgrounds</small></div></a>
+      <a class="logo-tile" href="brand/flobella-group-logo-gold.png" target="_blank" rel="noopener"><div class="art" style="background:var(--black)"><img src="brand/flobella-group-logo-gold.png" alt="Gold Flobella Group logo"></div><div class="meta">Flobella Group · Gold<small>On black only</small></div></a>
+      <a class="logo-tile" href="brand/flobella-F-mark-sand.png" target="_blank" rel="noopener"><div class="art" style="background:var(--black)"><img src="brand/flobella-F-mark-sand.png" alt="Gold F. mark"></div><div class="meta">F. mark · Gold<small>On black only</small></div></a>
+      <a class="logo-tile" href="brand/flobella-F-mark-black.png" target="_blank" rel="noopener"><div class="art" style="background:var(--paper)"><img src="brand/flobella-F-mark-black.png" alt="Black F. mark"></div><div class="meta">F. mark · Black<small>Profile pics, small spaces</small></div></a>
+      <a class="logo-tile" href="brand/flobella-F-mark-white.png" target="_blank" rel="noopener"><div class="art" style="background:var(--black)"><img src="brand/flobella-F-mark-white.png" alt="White F. mark"></div><div class="meta">F. mark · White<small>Profile pics, small spaces</small></div></a>
+    </div>
+    <h3>Colors</h3>
+    <div class="swatches" id="swatches"></div>
+    <div class="rules">
+      <div class="rule"><span class="yes">Flobella Group</span><br><span class="no">Flobella Realty Group</span> · <span class="no">The Flobella Group</span></div>
+      <div class="rule"><span class="yes">Central Florida</span><br><span class="no">Central &amp; Southwest Florida</span></div>
+    </div>
+    <h3>Markets</h3>
+    <p style="margin:0">Orlando · Winter Park · St. Cloud · Kissimmee · Lake Nona</p>
+  </section>
+
+</main>
+
+<footer>Flobella Group · Central Florida · Operating as a team under Real Broker LLC. For team use only.</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ---- EDIT LINKS HERE: paste a URL into any empty "url" ---- */
+const LINKS = [
+  {name:"Lofty CRM",            desc:"Leads, pipeline, follow-ups",              url:"https://lofty.com"},
+  {name:"ReZen",                desc:"Real Broker deals & compliance",            url:""},
+  {name:"Teams channel",        desc:"Team chat & announcements",                url:""},
+  {name:"Contract intake form", desc:"Submit right after execution",             url:""},
+  {name:"Listing intake form",  desc:"Before lockbox & sign checkout",           url:""},
+  {name:"Cold call sheet",      desc:"Scripts for 8 call types",                 url:"https://aguiarjchris.github.io/cold-call-sheet/"},
+  {name:"Weekly stats",         desc:"Monday meeting numbers",                   url:""},
+  {name:"Team Member Agreement",desc:"Your team agent agreement",                url:""},
+  {name:"Marketing templates",  desc:"Newsletter & open house emails",           url:""},
+  {name:"Real Broker application", desc:"For new agents joining the team",       url:""}
+];
+
+const PIPE = ["New Lead","Attempting Contact","Connected","Nurture","Active Buyer","Showing Scheduled","Appointment Set","Appointment Met","Listed","Under Contract","Closed"];
+
+const COLORS = [
+  {name:"Jet Black",  hex:"#000000"},
+  {name:"Sandy Brown",hex:"#C9A46B"},
+  {name:"Limewash",  hex:"#E7E1D6"},
+  {name:"Warm Stone", hex:"#C8C6BE"},
+  {name:"Clean White",hex:"#FFFFFF"}
+];
+
+const $ = id => document.getElementById(id);
+
+// Links
+$("link-grid").innerHTML = LINKS.map(l => l.url
+  ? `<a class="link" href="${l.url}" target="_blank" rel="noopener"><b>${l.name}</b><small>${l.desc}</small></a>`
+  : `<div class="link missing"><b>${l.name}</b><small>${l.desc}</small><span class="chip">Link needed</span></div>`
+).join("");
+
+// Pipeline
+$("pipe").innerHTML = PIPE.map((s,i) => {
+  const cls = s==="Active Buyer" ? "stage hot" : s==="Closed" ? "stage done" : "stage";
+  return `<span class="${cls}">${s}</span>` + (i<PIPE.length-1 ? '<span class="arrow" aria-hidden="true">→</span>' : "");
+}).join("");
+
+// Swatches
+$("swatches").innerHTML = COLORS.map(c =>
+  `<button class="sw" type="button" data-hex="${c.hex}"><div class="chipc" style="background:${c.hex}"></div><div class="meta"><b>${c.name}</b><small>${c.hex}</small></div></button>`
+).join("");
+let toastT;
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),1600);}
+document.querySelectorAll(".sw").forEach(b => b.addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(b.dataset.hex); toast("Copied " + b.dataset.hex); }
+  catch(e){ toast(b.dataset.hex + " (copy blocked, select it manually)"); }
+}));
+
+// Dates
+const MS = 86400000;
+const fmt = d => d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"});
+function startOfDay(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
+function daysUntil(d,today){return Math.round((d-today)/MS);}
+function when(n){return n===0 ? "Due today" : n===1 ? "Due tomorrow" : `In ${n} days`;}
+function setStat(id, date, label, alertDays){
+  const today = startOfDay(new Date()), n = daysUntil(date,today), el = $(id);
+  el.querySelector(".v").textContent = fmt(date);
+  el.querySelector(".s").textContent = label ? label(n) : when(n);
+  el.classList.toggle("alert", n <= alertDays);
+}
+(function(){
+  const today = startOfDay(new Date());
+  let m = new Date(today.getFullYear(), today.getMonth(), 15);
+  if (m < today) m = new Date(today.getFullYear(), today.getMonth()+1, 15);
+  let a = new Date(today.getFullYear(), 10, 1);
+  if (a < today) a = new Date(today.getFullYear()+1, 10, 1);
+  let mon = new Date(today); mon.setDate(today.getDate() + ((8 - today.getDay()) % 7));
+  setStat("stat-monthly", m, null, 3);
+  setStat("stat-annual", a, null, 14);
+  setStat("stat-meeting", mon, n => n===0 ? "Today · bring your weekly stats" : `Monday · in ${n} day${n>1?"s":""}`, 0);
+})();
+
+// Calculator
+const money = v => v.toLocaleString("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0});
+const num = s => parseFloat(String(s).replace(/[^0-9.]/g,""));
+function calc(){
+  const price = num($("c-price").value), rate = num($("c-rate").value), agentPct = Number($("c-source").value);
+  if (!(price>0) || !(rate>0)) {
+    ["r-gci","r-you","r-team"].forEach(id => $(id).textContent = "—");
+    $("r-gci-s").textContent = "Enter a sale price and commission %";
+    $("r-you-s").textContent = $("r-team-s").textContent = " ";
+    return;
+  }
+  const gci = price * rate / 100, you = gci * agentPct / 100, team = gci - you;
+  $("r-gci").textContent = money(gci);   $("r-gci-s").textContent = `${rate}% of ${money(price)}`;
+  $("r-you").textContent = money(you);   $("r-you-s").textContent = `${agentPct}% of gross`;
+  $("r-team").textContent = money(team); $("r-team-s").textContent = `${100-agentPct}% of gross · Real Broker split comes from here`;
+}
+["c-source","c-price","c-rate"].forEach(id => $(id).addEventListener("input", calc));
+$("c-price").addEventListener("blur", e => { const v = num(e.target.value); if (v>0) e.target.value = v.toLocaleString("en-US"); });
+calc();
+
+// Home screen install
+(function(){
+  const card = $("install");
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  let hidden = false;
+  try { hidden = localStorage.getItem("fgHubInstallHidden") === "1"; } catch(e){}
+  if (standalone || hidden) return;
+  const ua = navigator.userAgent || "";
+  const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const isAndroid = /Android/.test(ua);
+  $(isIOS ? "os-ios" : isAndroid ? "os-android" : "os-other").classList.add("on");
+  card.classList.add("show");
+  let deferred = null;
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault(); deferred = e; $("install-btn").hidden = false;
+  });
+  $("install-btn").addEventListener("click", async () => {
+    if (!deferred) return;
+    deferred.prompt();
+    try { await deferred.userChoice; } catch(e){}
+    deferred = null; $("install-btn").hidden = true;
+  });
+  window.addEventListener("appinstalled", () => card.classList.remove("show"));
+  $("install-hide").addEventListener("click", () => {
+    card.classList.remove("show");
+    try { localStorage.setItem("fgHubInstallHidden","1"); } catch(e){}
+  });
+})();
+
+// Offline support (works once hosted on GitHub Pages)
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
