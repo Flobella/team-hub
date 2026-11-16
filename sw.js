@@ -1,9 +1,9 @@
 // Flobella Group Team Hub — offline support.
 // Network first so agents always get the latest version; falls back to the saved copy when offline.
 // Bump VERSION whenever you change the icons or want to force a fresh cache.
-const VERSION = "fg-hub-v4";
+const VERSION = "fg-hub-v5";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest",
-  "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon-32.png", "./brand/logo-gold.png"];
+  "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon-32.png", "./brand/logo-gold.png", "./activity.js"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

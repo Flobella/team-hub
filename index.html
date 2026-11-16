@@ -160,6 +160,70 @@ input:focus,select:focus{border-color:var(--sand);outline:none;box-shadow:0 0 0 
 @media (max-width:480px){.install.show{grid-template-columns:1fr}.install img{width:52px;height:52px}}
 @media (display-mode: standalone){.install{display:none!important}}
 
+/* Weekly activity + leaderboard */
+.lb-head{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start}
+.who{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.who b{color:var(--ink)}
+.linkbtn{font:inherit;font-size:13px;font-weight:600;background:none;border:none;color:var(--sand-deep);cursor:pointer;padding:4px 0;text-decoration:underline}
+.lb-msg{margin:0;color:var(--muted);font-size:14px}
+.lb-err{color:#9b2c2c;font-size:13.5px;margin:8px 0 0}
+.lb-ok{color:var(--good);font-size:13.5px;margin:8px 0 0;font-weight:600}
+.lb-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px;align-items:start}
+@media (max-width:860px){.lb-grid{grid-template-columns:1fr}}
+.panel{border:1px solid #e2ddd3;border-radius:12px;padding:18px;background:var(--paper)}
+.panel h3{margin-top:0}
+.panel .sub{font-size:13px;color:var(--muted);margin:-4px 0 12px}
+.auth{max-width:420px;display:grid;gap:12px}
+.auth .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn.dark{background:var(--black);color:var(--sand)}
+.btn:disabled{opacity:.55;cursor:default}
+.metric{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #e2ddd3}
+.metric:last-of-type{border-bottom:none}
+.metric label{margin:0;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink)}
+.metric .pts{display:block;font-size:11.5px;font-weight:600;color:var(--sand-deep)}
+.step{display:flex;align-items:center;border:1px solid var(--stone);border-radius:10px;overflow:hidden;background:var(--white)}
+.step button{font:inherit;font-size:18px;width:40px;height:40px;border:none;background:var(--white);cursor:pointer;color:var(--ink)}
+.step button:active{background:var(--bone)}
+.step input{width:56px;height:40px;border:none;border-left:1px solid var(--stone);border-right:1px solid var(--stone);border-radius:0;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;padding:0}
+.formfoot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:14px}
+.total{font-size:13px;color:var(--muted)}
+.total b{font-size:20px;color:var(--ink);font-variant-numeric:tabular-nums}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tab{font:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:99px;border:1px solid var(--stone);background:var(--white);cursor:pointer;color:var(--muted)}
+.tab[aria-pressed="true"]{background:var(--black);color:var(--sand);border-color:var(--black)}
+.board{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.board li{background:var(--white);border:1px solid #e2ddd3;border-radius:10px}
+.board li.me{border-color:var(--sand);box-shadow:0 0 0 1px var(--sand) inset}
+.board button.rowbtn{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:11px 14px;cursor:pointer}
+.board .rk{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;background:var(--bone)}
+.board li:nth-child(1) .rk{background:var(--sand);color:var(--black)}
+.board li:nth-child(2) .rk{background:var(--stone)}
+.board li:nth-child(3) .rk{background:#e3cfae}
+.board li.zero .rk{background:var(--bone)!important;color:var(--muted)}
+.board .nm{font-weight:600}
+.board .bar{height:5px;border-radius:99px;background:var(--bone);margin-top:5px;overflow:hidden}
+.board .bar i{display:block;height:100%;background:var(--sand)}
+.board .sc{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.board .sc small{display:block;font-size:11px;font-weight:500;color:var(--muted)}
+.brk{display:none;padding:0 14px 12px 58px;font-size:13px;color:var(--muted)}
+.brk.open{display:grid;grid-template-columns:1fr auto;gap:2px 12px}
+.brk span:nth-child(even){font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.teamtot{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.teamtot div{background:var(--white);border:1px solid #e2ddd3;border-radius:8px;padding:6px 10px;font-size:12px;color:var(--muted)}
+.teamtot b{color:var(--ink);font-variant-numeric:tabular-nums}
+.owner{margin-top:18px}
+.owner details{border:1px solid #e2ddd3;border-radius:12px;background:var(--paper);margin-top:10px}
+.owner summary{cursor:pointer;padding:14px 18px;font-weight:700}
+.owner .inner{padding:0 18px 18px}
+.ofields{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:10px}
+.roster{width:100%;border-collapse:collapse;font-size:13.5px}
+.roster th,.roster td{text-align:left;padding:8px 6px;border-bottom:1px solid #e2ddd3}
+.roster th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+.ptsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 14px}
+.ptsgrid div{display:grid;grid-template-columns:1fr 70px;gap:8px;align-items:center;font-size:13.5px}
+.ptsgrid input{padding:6px 8px;text-align:center}
+
 footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:12.5px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--black);color:var(--sand);padding:9px 16px;border-radius:99px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s}
 .toast.show{opacity:1}
@@ -183,6 +247,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
 
 <nav aria-label="Sections">
   <ul>
+    <li><a href="#leaderboard">Leaderboard</a></li>
     <li><a href="#links">Quick links</a></li>
     <li><a href="#contacts">Who to go to</a></li>
     <li><a href="#deals">Deal workflow</a></li>
@@ -223,6 +288,17 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
         <button class="btn ghost" id="install-hide" type="button">Hide this</button>
       </div>
     </div>
+  </section>
+
+  <section class="wide" id="leaderboard" aria-labelledby="lb-h">
+    <div class="lb-head">
+      <div>
+        <h2 id="lb-h">Weekly activity</h2>
+        <p class="lede" id="lb-sub">Log your numbers each week and see where you rank.</p>
+      </div>
+      <div class="who" id="lb-who" hidden></div>
+    </div>
+    <div id="lb-root"><p class="lb-msg">Loading…</p></div>
   </section>
 
   <section class="wide" id="links">
@@ -509,5 +585,7 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js"></script>
+<script src="activity.js"></script>
 </body>
 </html>
