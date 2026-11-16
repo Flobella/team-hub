@@ -84,6 +84,10 @@ h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand
 .link:hover{border-color:var(--sand);background:var(--white)}
 .link b{font-size:15px}
 .link small{color:var(--muted);font-size:12.5px}
+.pb-open{display:inline-block;margin:0 0 16px;padding:12px 20px;border-radius:10px;background:var(--black,#000);color:var(--sand);font-weight:700;font-size:14px;letter-spacing:.3px;text-decoration:none}
+.pb-open:hover{background:#1e1e1e}
+.pb-chapters .link .num{font-family:"Bodoni Moda",serif;color:var(--sand);font-size:22px;line-height:1}
+.pb-chapters{margin-bottom:14px}
 .link.missing{border-style:dashed;cursor:default}
 .link .chip{align-self:flex-start;margin-top:6px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:99px;background:#f3e6cf;color:var(--warn)}
 
@@ -249,6 +253,7 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
   <ul>
     <li><a href="#leaderboard">Leaderboard</a></li>
     <li><a href="#links">Quick links</a></li>
+    <li><a href="#playbook">Agent Playbook</a></li>
     <li><a href="#contacts">Who to go to</a></li>
     <li><a href="#deals">Deal workflow</a></li>
     <li><a href="#fees">Fees &amp; dates</a></li>
@@ -305,6 +310,14 @@ footer{max-width:1120px;margin:0 auto;padding:0 20px 40px;color:var(--muted);fon
     <h2>Quick links</h2>
     <p class="lede">Everything you open on a normal day. Bookmark this page and start here.</p>
     <div class="links" id="link-grid"></div>
+  </section>
+
+  <section class="wide" id="playbook">
+    <h2>Agent Playbook</h2>
+    <p class="lede">The habits, systems, and scripts behind a Flobella Group career. Read it once front to back, then come back to the chapter you need.</p>
+    <a class="pb-open" href="docs/Flobella_Group_Agent_Playbook.pdf" target="_blank" rel="noopener">Open the full playbook (PDF)</a>
+    <div class="links pb-chapters" id="pb-grid"></div>
+    <div class="note">Volume 1 · Team agent use only. If anything here conflicts with your Team Member Agreement or the Policy and Procedure Manual, those win.</div>
   </section>
 
   <section id="contacts">
@@ -465,9 +478,20 @@ const LINKS = [
   {name:"Listing intake form",  desc:"Before lockbox & sign checkout",           url:""},
   {name:"Cold call sheet",      desc:"Scripts for 8 call types",                 url:"https://flobella.github.io/cold-call-sheet/"},
   {name:"Weekly stats",         desc:"Monday meeting numbers",                   url:""},
+  {name:"Agent Playbook",       desc:"Daily routine, Top 50, scripts, deal protection", url:"docs/Flobella_Group_Agent_Playbook.pdf"},
   {name:"Team Member Agreement",desc:"Your team agent agreement",                url:""},
   {name:"Marketing templates",  desc:"Newsletter & open house emails",           url:""},
   {name:"Real Broker application", desc:"For new agents joining the team",       url:""}
+];
+
+/* ---- AGENT PLAYBOOK: page = the chapter's first page in the PDF ---- */
+const PLAYBOOK = "docs/Flobella_Group_Agent_Playbook.pdf";
+const CHAPTERS = [
+  {n:"01", name:"Mastering the Daily Routine",       desc:"Your morning checklist, lead follow-up by priority, weekly pillars", page:3},
+  {n:"02", name:"Relationships & Your Top 50",        desc:"Turning 50 people into referrals, set up in Lofty",                 page:6},
+  {n:"03", name:"Top 50 Monthly Touch Calendar",      desc:"12 months of Central Florida touch ideas",                          page:11},
+  {n:"04", name:"Voicemails, Emails & Texts by Style",desc:"Spot the four styles and match them",                               page:13},
+  {n:"05", name:"Protecting the Deal",                desc:"65 things that can go wrong and how we prevent them",               page:16}
 ];
 
 const PIPE = ["New Lead","Attempting Contact","Connected","Nurture","Active Buyer","Showing Scheduled","Appointment Set","Appointment Met","Listed","Under Contract","Closed"];
@@ -486,6 +510,11 @@ const $ = id => document.getElementById(id);
 $("link-grid").innerHTML = LINKS.map(l => l.url
   ? `<a class="link" href="${l.url}" target="_blank" rel="noopener"><b>${l.name}</b><small>${l.desc}</small></a>`
   : `<div class="link missing"><b>${l.name}</b><small>${l.desc}</small><span class="chip">Link needed</span></div>`
+).join("");
+
+// Playbook chapters
+$("pb-grid").innerHTML = CHAPTERS.map(ch =>
+  `<a class="link" href="${PLAYBOOK}#page=${ch.page}" target="_blank" rel="noopener"><span class="num">${ch.n}</span><b>${ch.name}</b><small>${ch.desc}</small></a>`
 ).join("");
 
 // Pipeline
